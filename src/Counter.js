@@ -2,21 +2,14 @@ import {useState} from 'react';
 import Store from './Store';
 
 const Counter = () => {
-    const [count, setCount] = useState(0); // the stored counter value
+    const [playerMoney, setMoney] = useState(0); // the stored counter value
   
     function increment(inc) {
-        const new_val = count + inc;
-        setCount(new_val);
-        console.log(`incrementing by ${inc} from value ${count} so the new val is ${new_val}`);
+        const new_val = playerMoney + inc;
+        setMoney(new_val);
+        //console.log(`incrementing by ${inc} from value ${playerMoney} so the new val is ${new_val}`);
     }
-    function clear() {
-        setCount(0);
-    }
-    //const _1_button = <button className="counter-button" onClick={() => increment(1)} key={1}>+1</button>;
-    //const _5_button = <button className="counter-button" onClick={() => increment(5)} key={2}>+5</button>;
-   // const _10_button = <button className="counter-button" onClick={() => increment(10)} key={3}>+10</button>;
-    //const _100_button = <button className="counter-button" onClick={() => increment(100)} key={4}>+100</button>;
-    // <button className="counter-button-clear" onClick={() => clear()}>Clear</button>
+    
     const _1_button = {id:1, increment: 1}; // these are JS objects
     const _5_button = {id:2, increment: 5};
     const _10_button = {id:3, increment: 10}; 
@@ -31,15 +24,38 @@ const Counter = () => {
 
     function add_button(cost) {
         const buttonToAdd = cost_map[cost];
-        if (!cur_button_arr.includes(buttonToAdd)) {
-            setButtonArr([...cur_button_arr, buttonToAdd]);
+        console.log(cur_button_arr);
+        if (!hasButtonOfIncrement(buttonToAdd.increment)) {
+            let success = buyButton(cost);
+            if (success) {
+                setButtonArr([...cur_button_arr, buttonToAdd]);
+            }
         }
+    };
+    
+    function hasButtonOfIncrement(increment) {
+        for (let i = 0; i < cur_button_arr.length; i++) {
+            //console.log(cur_button_arr[i].increment);
+            if (cur_button_arr[i].increment === increment) {
+                return true;
+            }
+        }
+        return false;
     }
 
+    function buyButton(cost) {
+        if (cost <= playerMoney) {
+            setMoney(playerMoney - cost);
+            return true;
+        }
+        console.log("Not enough money");
+        return false;
+    };
+
     return (  
-        <div>
+        <div className="top">
             <h1 className="title">Welcome to Counter!</h1>
-            <h1 className="counter">{count}</h1>
+            <h1 className="counter">{playerMoney}</h1>
             <div className="buttons">
                 {cur_button_arr.map(
                     (_button) => (
@@ -52,7 +68,7 @@ const Counter = () => {
                     )
                 )}
             </div>
-            <Store playerMoney={count} setMoney={setCount} addButtonFxn={add_button}/> 
+            <Store playerMoney={playerMoney} setMoney={setMoney} addButtonFxn={add_button}/> 
         </div>
     );
 }
