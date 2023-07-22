@@ -1,13 +1,64 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  text-align: center;
+  background-color: black;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.title {
+  color: lightblue;
+}
+.counter {
+  color: white;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+  background-color: white;
+  padding: 10px;
+}
+.store-view {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  background-color: white;
+  padding: 10px;
+}
+/*
+flex-direction: column;  we care about the main axis downward 
+align-items: center;  cross axis alignemt 
+*/
+.buttons button, .store button {
+  background-color: darkblue;
+  border-color: orange;
+  color: white;
+}
+.counter-button {
+  width: 50%;
+  margin-top: 5px;
+}
+.counter-button-clear {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+.store {
+  color: white;
+  /*background-color: orange;
+  width: 40%;*/
+}
+.store-row {
+  width: 100%;
+}
+.store h1 {
+  background-color: inherit;
+}
+.store-button {
+  margin-left: auto;
+  align-items: center;
+  align-self: center;
 }

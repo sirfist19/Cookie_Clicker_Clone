@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Counter from './Counter';
+import Store from './Store';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Counter/>
     </div>
   );
+
+  // <Words/>
+  // note if the onClick function is set to just increment(count) then it will be run when rendering the button element
+  //  to make it run only on clicks, need to either call the function without an argument (which sets it as a callback),
+  //  or place it in an arrow function
 }
 
 export default App;
